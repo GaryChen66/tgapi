@@ -1,0 +1,86 @@
+{
+  "name": "tgapi",
+  "version": "2.2.6",
+  "description": "Actual Telegram bot API JS implementation",
+  "repository": "bigslycat/tgapi",
+  "author": "Pavel Tereschenko <me@stupidcat.wtf> (https://github.com/bigslycat)",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "files": [
+    "README.md",
+    "LICENSE.md",
+    "lib",
+    "esm",
+    "src"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "flow-entry": "cp lib/index.js.flow esm/index.js.flow",
+    "generate-core": "NODE_ENV=script babel-node src/scripts/generateCore",
+    "lint": "eslint .",
+    "flow": "flow",
+    "test": "ava --verbose",
+    "test:nyc": "nyc ava --verbose",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "preversion": "git checkout master && yarn lint && yarn flow",
+    "postversion": "git push --follow-tags"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn flow"
+    }
+  },
+  "dependencies": {
+    "core-js": "^3.0.1",
+    "events": "^3.0.0",
+    "form-data": "^2.3.3",
+    "isomorphic-fetch": "^2.2.1",
+    "symbol-observable": "^1.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/register": "^7.4.0",
+    "ava": "^1.4.1",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-istanbul": "^5.1.1",
+    "coveralls": "^3.0.3",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-flowtype": "^3.6.1",
+    "eslint-plugin-import": "^2.17.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "esm": "^3.2.22",
+    "flow-bin": "^0.103.0",
+    "flow-typed": "^2.5.1",
+    "husky": "^3.0.1",
+    "jquery": "^3.4.0",
+    "jsdom": "^15.1.1",
+    "nyc": "^13.3.0",
+    "prettier": "^1.17.0",
+    "rollup": "^1.10.0",
+    "rollup-plugin-babel": "4.3.3",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-flow-entry": "^0.3.1",
+    "shx": "^0.3.2",
+    "sinon": "^7.3.1",
+    "wordwrap": "^1.0.0"
+  },
+  "resolutions": {
+    "semver": "^5.5.0"
+  },
+  "keywords": [
+    "API",
+    "bot",
+    "bots",
+    "Telegram",
+    "tg",
+    "flow",
+    "flowtype"
+  ]
+}
